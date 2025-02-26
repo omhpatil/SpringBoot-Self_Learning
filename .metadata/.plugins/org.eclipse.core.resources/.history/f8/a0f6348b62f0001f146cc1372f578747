@@ -1,0 +1,58 @@
+package com.main.controller;
+
+import org.springframework.web.bind.annotation.*;
+
+import com.main.model.User;
+
+@RestController
+//@RequestMapping("/helloController")
+public class HelloWorldController {
+    
+    // URL: http://localhost:8080/helloController or /home
+    @GetMapping("/")
+    public String sayHello() {
+        return "Hello World From BridgeLabzz!";
+    }
+    
+    
+    
+    // URL: http://localhost:8080/helloController/param/Om%20Patil
+    // till param its URL and next part is considered as path variable 
+    @GetMapping("/param/{name}") 
+    public String sayHelloParam(@PathVariable String name) { 
+        return "Hello " + name + "!";
+    }
+
+    
+    
+    // URL: http://localhost:8080/helloController/query?name=Om%20Patil
+    @GetMapping("/query")
+    public String sayHello(@RequestParam(value = "name") String name) {
+        return "Hello " + name + "!";
+    }
+
+    
+
+    // URL: http://localhost:8080/helloController/post (Don't forgot to Use POST request)   
+//    {
+//    	  "firstName": "Om",
+//    	  "lastName": "Patil"			you have write this data inside RAW -> JSON and click on send it will show Hello, Om Patil in Response 
+//    }
+    
+    @PostMapping("/post")
+    public String sayHelloByPost(@RequestBody User user) {
+    	// Here user is bean class which consist of getter and setter
+        return "Hello " + user.getFirstName() + " " + user.getLastName() + "!";
+    }
+    
+
+   
+    // URL: http://localhost:8080/helloController/put/Om?lastName=Patil (Don't forgot to Use PUT request)
+    // There is no need of extra data you can simply write your name in URL and it will show Hello, Om Patil in response
+    
+    @PutMapping("/put/{firstName}") 
+    public String sayHello(@PathVariable String firstName, 
+                           @RequestParam(value = "lastName") String lastName) { 
+        return "Hello " + firstName + " " + lastName + "!";
+    }
+}

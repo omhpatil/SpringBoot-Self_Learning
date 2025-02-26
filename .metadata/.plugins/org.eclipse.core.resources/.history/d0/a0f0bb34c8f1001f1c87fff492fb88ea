@@ -1,0 +1,8 @@
+package com.main.config;
+
+import org.hibernate.annotations.Comment;
+
+@Comment
+public class DataInitilizer {
+
+}

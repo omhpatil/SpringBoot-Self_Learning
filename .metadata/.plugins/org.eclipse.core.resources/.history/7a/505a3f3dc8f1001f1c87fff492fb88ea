@@ -1,0 +1,8 @@
+package com.main.config;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class DataInitilizer {
+
+}

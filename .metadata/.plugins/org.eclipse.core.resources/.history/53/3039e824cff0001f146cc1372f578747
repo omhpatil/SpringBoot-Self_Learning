@@ -1,0 +1,20 @@
+package com.main;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class Day3GreetingProjectApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(Day3GreetingProjectApplication.class, args);
+	}
+
+}
+
+//Required Dependencies:
+//✅ Spring Web → For building REST APIs
+//✅ Spring Boot DevTools → For automatic restart during development
+//✅ Spring Data JPA → For database access using JPA
+//✅ MySQL Driver → For connecting with MySQL database
+//✅ Lombok (Optional) → To reduce boilerplate code (Getters/Setters, Constructors)

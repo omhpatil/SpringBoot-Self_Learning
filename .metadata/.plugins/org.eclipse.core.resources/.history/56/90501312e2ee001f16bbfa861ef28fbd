@@ -1,0 +1,25 @@
+package com.main;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.error.ErrorController;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@SpringBootApplication
+public class GreetingControllerApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(GreetingControllerApplication.class, args);
+		
+		@Controller 
+		class CustomErrorController implements ErrorController {
+		    @RequestMapping("/error")
+		    public String handleError() {
+		        return "customErrorPage"; // Return a custom error page (Thymeleaf or HTML)
+		    }
+		}
+
+	}
+
+}

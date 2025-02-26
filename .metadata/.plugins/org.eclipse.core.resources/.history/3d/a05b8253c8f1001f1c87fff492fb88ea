@@ -1,0 +1,9 @@
+package com.main.config;
+
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
+
+@Component
+public class DataInitilizer implements CommandLineRunner {
+
+}

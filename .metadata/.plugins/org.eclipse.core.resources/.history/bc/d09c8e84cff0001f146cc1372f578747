@@ -1,0 +1,27 @@
+package com.example.demo.controller;
+
+import org.springframework.web.bind.annotation.*;
+import com.main.demo.model.User;
+import java.util.HashMap;
+import java.util.Map;
+
+@RestController
+@RequestMapping("/user")
+public class UserController {
+
+    // Temporary in-memory storage
+    private Map<Integer, User> userDatabase = new HashMap<>();
+
+    // CREATE user - POST request
+    @PostMapping("/")
+    public String createUser(@RequestBody User user) {
+        userDatabase.put(1, user); // Storing user with ID = 1 (For demo purposes)
+        return "User created successfully!";
+    }
+
+    // GET user by ID
+    @GetMapping("/{id}")
+    public User getUserById(@PathVariable int id) {
+        return userDatabase.get(id); // Returning stored user
+    }
+}

@@ -1,0 +1,45 @@
+package com.main.product;
+
+import org.springframework.stereotype.Service;
+import java.util.List;
+import java.util.Optional;
+
+import com.main.repository.ProductRepository;
+import com.main.model.Product;
+
+@Service
+public class ProductService {
+    
+    private final ProductRepository productRepository;
+
+    // Create
+    public Product saveProduct(Product product) {
+        return productRepository.save(product);
+    }
+
+    // Read (Single)
+    public Optional<Product> getProductById(Long id) {
+        return productRepository.findById(id);
+    }
+
+    // Read (All)
+    public List<Product> getAllProducts() {
+        return productRepository.findAll();
+    }
+
+    // Update
+    public Product updateProduct(Long id, Product product) {
+        return productRepository.findById(id)
+                .map(existingProduct -> {
+                    existingProduct.setName(product.getName());
+                    existingProduct.setPrice(product.getPrice());
+                    return productRepository.save(existingProduct);
+                })
+                .orElseThrow(() -> new RuntimeException("Product not found"));
+    }
+
+    // Delete
+    public void deleteProduct(Long id) {
+        productRepository.deleteById(id);
+    }
+}
